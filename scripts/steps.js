@@ -22,10 +22,12 @@ async function handleCookies(page) {
 
 async function selectProfessional(page) {
   await page.waitForTimeout(1000 + Math.random() * 1000);
+  await page.mouse.move(300, 200);
   await page.click('text=Por Profesional');
   await page.waitForTimeout(1000 + Math.random() * 1000);
   await page.locator("[name='professionalSearch']").fill(config.doctor);
   await page.waitForTimeout(1000 + Math.random() * 1000);
+  await page.mouse.move(200, 200);
   await page.click(`text=${config.doctor}`);
   await page.waitForTimeout(1000 + Math.random() * 1000);
 }
@@ -33,24 +35,29 @@ async function selectProfessional(page) {
 async function fillPatientInfo(page) {
   await page.click('text=Siguiente');
   await page.waitForTimeout(1000 + Math.random() * 1000);
+  await page.mouse.move(300, 300);
   await page.click('text=NO, ya estoy en un proceso médico');
   await page.waitForTimeout(1000 + Math.random() * 1000);
   await page.click('text=Consulta Sucesiva');
   await page.waitForTimeout(1000 + Math.random() * 1000);
+  await page.mouse.move(200, 300);
   await page.click('text=Telefónica');
   await page.waitForTimeout(1000 + Math.random() * 1000);
   await page.click('text=Siguiente');
   await page.waitForTimeout(1000 + Math.random() * 1000);
   await page.click('text=Tengo seguro médico');
   await page.waitForTimeout(1000 + Math.random() * 1000);
+  await page.mouse.move(300, 300);
   await page.click(`text=${config.insurance}`);
   await page.waitForTimeout(1000 + Math.random() * 1000);
   await page.click(`text=${config.insurancePlan}`);
   await page.waitForTimeout(1000 + Math.random() * 1000);
+  await page.mouse.move(300, 200);
   await page.click('text=Continuar');
   await page.waitForTimeout(1000 + Math.random() * 1000);
   await page.click(`text=${config.gender}`);
   await page.waitForTimeout(1000 + Math.random() * 1000);
+  await page.mouse.move(300, 200);
   await page.locator("[name='edad']").fill(config.age);
   await page.waitForTimeout(1000 + Math.random() * 1000);
   await page.click('text=Ver fechas');
