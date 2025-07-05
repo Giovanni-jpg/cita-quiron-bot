@@ -2,3 +2,4 @@
 .env
 lastAppointment.txt
 config/constants.js
+cron-logs.txt
