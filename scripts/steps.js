@@ -8,7 +8,7 @@ async function handleCookies(page) {
       const btn = await frame.$('#onetrust-accept-btn-handler');
       if (btn) {
         await btn.click({ timeout: 3000 });
-        log('Cookies accepted');
+        //log('Cookies accepted');
         return;
       }
     }

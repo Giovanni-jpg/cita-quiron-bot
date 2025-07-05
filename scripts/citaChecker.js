@@ -5,6 +5,7 @@ const { notify } = require('../lib/notify');
 const { log } = require('./utils');
 
 module.exports = async function citaChecker() {
+  log('========== Cita Quiron Bot Job Started ==========');
   const browser = await chromium.launch({ headless: false });
   const page = await browser.newPage();
 
@@ -23,16 +24,16 @@ module.exports = async function citaChecker() {
 
   const lastDateStr = getLastDate();
   if (!lastDateStr) {
-    log('No previous date found, saving new date...');
+    log('No data found in lastAppointment.txt, saving this slot as the earliest one...');
     saveNewDate(dateTimeStr);
   } else {
 
     if (dateTimeStr < lastDateStr) {
-      log('New earlier slot detected! Sending notification...');
+      log('This slot is earlier than the previously saved one! Sending notification...');
       await notify(dateTimeStr);
       saveNewDate(dateTimeStr);
     } else {
-      log('No earlier slot found, keeping last date:', lastDateStr);
+      log('This slot is not earlier than the previously saved one:', lastDateStr);
     }
   }
 
