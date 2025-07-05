@@ -1,5 +1,5 @@
-const citaChecker = require('./scripts/citaChecker');
+const { fetchAppt } = require('./scripts/fetch-appointments');
 
 (async () => {
-  await citaChecker();
+  await fetchAppt();
 })();
