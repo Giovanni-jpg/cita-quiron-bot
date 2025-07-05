@@ -4,7 +4,7 @@ require('dotenv').config();
 const { config } = require('../config/constants');
 const { getLastDate, saveNewDate } = require('../lib/storage');
 const { notify } = require('../lib/notify');
-const { log, formatDate } = require('./utils');
+const { log, formatDate, getTodayDateStr, getCurrentTimeNum } = require('./utils');
 
 async function fetchAppt() {
   log('------------------------------Starting Cita Quiron Bot------------------------------');
@@ -41,14 +41,14 @@ async function fetchAppt() {
       financialType: 1,
       garanteHIS: false,
       espPresHIS: false,
-      fechaInicio: '05/07/2025',
+      fechaInicio: getTodayDateStr(),
       idProvincia: 8,
       idProfesionalPdP: 2186,
       edad: 25,
       isProtocolosChatBot: false,
       isLast: false,
       tipoBusqueda: 'SIMPLE',
-      horaInicio: 144043,
+      horaInicio: getCurrentTimeNum(),
     });
 
     const response = await axios.post(
