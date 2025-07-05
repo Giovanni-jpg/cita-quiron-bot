@@ -84,7 +84,7 @@ async function fetchAppt() {
         }
       }
     } else {
-      console.log('No available appointments found.');
+      log('No available appointments found.');
     }
   } catch (err) {
     console.error('Request failed:', err.response?.data || err.message);
