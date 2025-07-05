@@ -1,6 +1,9 @@
 # Cita Checker
 
-This script automates the check for earlier available medical appointments on the QuirónSalud website. It searches by practitioner name, for a phone consultation, for a patient already in an ongoing medical process with a specific insurance plan.
+This project automates checking for earlier available medical appointments on the QuirónSalud website in Barcelona. It sends a carefully crafted HTTP POST request using Axios to query appointment slots and notifies via Pushover if an earlier slot than the saved one is found. The tool is intended for personal convenience and is not affiliated with QuirónSalud.
+
+Originally, a Playwright-based scraper was used to navigate the site, but due to bot blockers, that approach became unreliable. The Playwright code remains in the repo as a fun reference, while the current solution relies on Axios to directly query the appointment API.
+
 
 ## Setup
 
@@ -8,7 +11,7 @@ This script automates the check for earlier available medical appointments on th
 
    ```bash
    git clone https://github.com/your-username/cita-quiron-bot.git
-   cd cita-checker
+   cd cita-quiron-bot
    ```
 
 2. **Install dependencies:**
@@ -27,18 +30,27 @@ This script automates the check for earlier available medical appointments on th
    25/07/2025_12:45
    ```
 
-2. **Update your preferences:**
+2. **Update your preferences and API parameters:**
 
-   Create `config/constants.js` (you can copy the example file) and fill in your details:
+   Create `config/constants.js` (you can copy the example file) and fill in your details, including the specific IDs and codes required by the QuirónSalud API (get those from the website network requests or your browser's developer tools):
 
    ```js
    module.exports.config = {
-     doctor: 'Dr. Name',
-     insurance: 'Your Insurance',
-     insurancePlan: 'Plan Name',
-     gender: 'Hombre', // or 'Mujer'
-     age: '24'
+     idCentro: '034081100',
+     codCentroAsociado: '034081199',
+     idPrestacion: '20672.00',
+     idGestion: 210755401,
+     // other config values as needed
    };
+   ```
+
+3. **Set your environment variables:**
+
+   Create a `.env` file in the root with your required sensitive data (get these from your browser's developer tools):
+
+   ```
+   QUIRON_CSRF=your_csrf_token_here
+   QUIRON_COOKIES=your_full_cookie_string_here
    ```
 
 ## Run the script
@@ -47,4 +59,7 @@ To start the checker, run:
 
 ```bash
 node index.js
+```
+
+This will send a request to the appointment API, process the response, and notify you if an earlier appointment slot is found compared to the one saved in `lastAppointment.txt`.
 ```
