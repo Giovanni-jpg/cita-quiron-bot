@@ -7,7 +7,7 @@ This script automates the check for earlier available medical appointments on th
 1. **Clone the project:**
 
    ```bash
-   git clone https://github.com/your-username/cita-checker.git
+   git clone https://github.com/your-username/cita-quiron-bot.git
    cd cita-checker
    ```
 
