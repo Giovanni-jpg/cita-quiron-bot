@@ -1,6 +1,6 @@
 const { chromium } = require('playwright');
 const { selectProfessional, fillPatientInfo, handleCookies } = require('./steps');
-const { getLastDate, saveNewDate, parseDate } = require('../lib/storage');
+const { getLastDate, saveNewDate } = require('../lib/storage');
 const { notify } = require('../lib/notify');
 const { log } = require('./utils');
 
@@ -26,10 +26,8 @@ module.exports = async function citaChecker() {
     log('No previous date found, saving new date...');
     saveNewDate(dateTimeStr);
   } else {
-    const newDate = parseDate(dateTimeStr);
-    const lastDate = parseDate(lastDateStr);
 
-    if (newDate < lastDate) {
+    if (dateTimeStr < lastDateStr) {
       log('New earlier slot detected! Sending notification...');
       await notify(dateTimeStr);
       saveNewDate(dateTimeStr);
