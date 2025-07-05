@@ -4,7 +4,12 @@ module.exports.config = {
   insurance: 'Insurance Name',
   insurancePlan: 'Plan Name',
   gender: 'Hombre', // or 'Mujer'
-  age: 'YourAge'
+  age: 'YourAge',
+  idCentro: '',
+  codCentroAsociado: '',
+  idPrestacion: '',
+  idGestion: 0,
+  idProfesionalPdP: 0,
 };
 
 
