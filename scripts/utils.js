@@ -1,5 +1,5 @@
-function log(message) {
-  console.log(`[${new Date().toLocaleTimeString()}] ${message}`);
+function log(...args) {
+  console.log(`[${new Date().toLocaleTimeString()}]`, ...args);
 }
 
 module.exports = { log };
