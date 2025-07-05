@@ -1,6 +1,6 @@
 # Cita Checker
 
-This project automates checking for earlier available medical appointments on the QuirónSalud website in Barcelona. It sends a carefully crafted HTTP POST request using Axios to query appointment slots and notifies via Pushover if an earlier slot than the saved one is found. The tool is intended for personal convenience and is not affiliated with QuirónSalud.
+This project automates checking for earlier available medical appointments on the QuirónSalud website in Barcelona. It sends a carefully crafted HTTP POST request using Axios to query appointment slots and notifies via Pushover if an earlier slot than the saved one is found. The tool is intended for personal convenience and is not affiliated with QuirónSalud. I'm personally configuring it to run every 20 minutes using a cron job on my machine.
 
 Originally, a Playwright-based scraper was used to navigate the site, but due to bot blockers, that approach became unreliable. The Playwright code remains in the repo as a fun reference, while the current solution relies on Axios to directly query the appointment API.
 
