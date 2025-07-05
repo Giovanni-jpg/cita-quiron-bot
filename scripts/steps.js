@@ -1,14 +1,23 @@
 const { config } = require('../config/constants');
+const { log } = require('./utils');
 
 async function handleCookies(page) {
   try {
-    const btn = await page.frameLocator('iframe').locator('#onetrust-accept-btn-handler');
-    await btn.click({ timeout: 3000 });
-    console.log('Cookies accepted');
-  } catch(e) {
-    console.log('Cookies already accepted or not found', e.message);
+    const frames = page.frames();
+    for (const frame of frames) {
+      const btn = await frame.$('#onetrust-accept-btn-handler');
+      if (btn) {
+        await btn.click({ timeout: 3000 });
+        log('Cookies accepted');
+        return;
+      }
+    }
+    log('Cookie button not found in any iframe');
+  } catch (e) {
+    log('Error handling cookies:', e.message);
   }
 }
+
 
 async function selectProfessional(page) {
   await page.click('text=Por Profesional');
