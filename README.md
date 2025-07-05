@@ -21,7 +21,7 @@ This script checks for earlier medical appointment slots on the QuirónSalud web
 
 1. **Set your latest known appointment:**
 
-   Open the `lastAppointment.txt` file and paste the last appointment you currently have in this format:
+   Create the `lastAppointment.txt` file and paste the last appointment you currently have in this format:
 
    ```
    25/07/2025_12:45
@@ -29,7 +29,7 @@ This script checks for earlier medical appointment slots on the QuirónSalud web
 
 2. **Update your preferences:**
 
-   Edit `config/constants.js` and fill in your details:
+   Create `config/constants.js` (you can copy the example file) and fill in your details:
 
    ```js
    module.exports.config = {
