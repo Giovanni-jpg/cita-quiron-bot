@@ -1,6 +1,6 @@
 # Cita Checker
 
-This script checks for earlier medical appointment slots on the QuirónSalud website and notifies you when a better one is found.
+This script automates the check for earlier available medical appointments on the QuirónSalud website. It searches by practitioner name, for a phone consultation, for a patient already in an ongoing medical process with a specific insurance plan.
 
 ## Setup
 
