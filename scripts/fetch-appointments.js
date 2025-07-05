@@ -7,6 +7,7 @@ const { notify } = require('../lib/notify');
 const { log, formatDate } = require('./utils');
 
 async function fetchAppt() {
+  log('------------------------------Starting Cita Quiron Bot------------------------------');
   try {
     const headers = {
       accept: '*/*',
