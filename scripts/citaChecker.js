@@ -15,16 +15,11 @@ module.exports = async function citaChecker() {
   await selectProfessional(page);
   await fillPatientInfo(page);
 
-  const firstGap = page.locator('.hour-button.isFirstGap');
-  if (await firstGap.count() === 0) {
-    log('No available slots found');
-    await browser.close();
-    return;
-  } else {
-    const hourId = await firstGap.first().getAttribute('id');
-    const dateTimeStr = hourId?.slice(20);
-    log('First slot found', dateTimeStr);
-  }
+  const firstGap = await page.locator('.hour-button.isFirstGap').first();
+  const hourId = await firstGap.getAttribute('id');
+
+  const dateTimeStr = hourId.slice(20); // "25/07/2025_12:45"
+  log('First slot found', dateTimeStr);
 
   const lastDateStr = getLastDate();
   if (!lastDateStr) {
