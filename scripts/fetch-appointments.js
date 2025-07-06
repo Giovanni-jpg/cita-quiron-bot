@@ -7,7 +7,6 @@ const { notify } = require('../lib/notify');
 const { log, formatDate, getTodayDateStr, getCurrentTimeNum } = require('./utils');
 
 async function fetchAppt() {
-  log('------------------------------Starting Cita Quiron Bot------------------------------');
   try {
     const headers = {
       accept: '*/*',
@@ -61,7 +60,7 @@ async function fetchAppt() {
     if (appointments.length > 0) {
       const first = appointments[0];
       const dateTimeStr = `${first.fechaCitaStr}_${first.horaCitaStr}`;
-      log('First slot found', dateTimeStr);
+      log('FIRST SLOT', dateTimeStr);
 
       const lastDateStr = getLastDate();
       if (!lastDateStr) {
@@ -72,14 +71,14 @@ async function fetchAppt() {
       } else {
         if (dateTimeStr < lastDateStr) {
           log(
-            'This slot is earlier than the previously saved one! Sending notification...'
+            '********SUCCESS! Sending notification********'
           );
           const messageDate = formatDate(dateTimeStr);
           await notify(messageDate);
           saveNewDate(dateTimeStr);
         } else {
           log(
-            'This slot is not earlier than the previously saved one:',
+            'FAIL, KEEPING PREVIOUS:',
             lastDateStr
           );
         }
