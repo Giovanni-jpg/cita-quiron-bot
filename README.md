@@ -61,5 +61,12 @@ To start the checker, run:
 node index.js
 ```
 
-This will send a request to the appointment API, process the response, and notify you if an earlier appointment slot is found compared to the one saved in `lastAppointment.txt`.
+This will send a request to the appointment API every 20 minutes, process the response, and notify you if an earlier appointment slot is found compared to the one saved in `lastAppointment.txt`.
+
+To change the frequency of execution, open `index.js` and update the string pattern at the 7th line:
+
 ```
+cron.schedule('*/20 * * * *', async () => {
+```
+
+Further documentation on how to set that pattern based on your needs can be found here: https://github.com/node-cron/node-cron and here: https://linux.die.net/man/5/crontab
