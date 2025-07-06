@@ -4,7 +4,7 @@ overrideConsole(); // Capture all console logs/errors
 const { fetchAppt } = require('./scripts/fetch-appointments');
 const cron = require('node-cron');
 
-cron.schedule('*/5 * * * * *', async () => {
+cron.schedule('*/20 * * * *', async () => {
   console.log(`RUNNING CRON JOB`);
   try {
     await fetchAppt();
