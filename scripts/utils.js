@@ -22,7 +22,6 @@ function getTodayDateStr() {
   const day = String(now.getDate()).padStart(2, '0');
   const month = String(now.getMonth() + 1).padStart(2, '0'); // months are 0-based
   const year = now.getFullYear();
-  console.log(`Returning today's date: ${day}/${month}/${year}`);
   return `${day}/${month}/${year}`;
 }
 
@@ -31,8 +30,7 @@ function getCurrentTimeNum() {
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const seconds = String(now.getSeconds()).padStart(2, '0');
-  console.log(`Returning: ${Number(`${hours}${minutes}${seconds}`)}`);
-  return Number(`${hours}${minutes}${seconds}`);
+  return `${hours}${minutes}${seconds}`;
 }
 
 
