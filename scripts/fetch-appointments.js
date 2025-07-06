@@ -4,7 +4,7 @@ require('dotenv').config();
 const { config } = require('../config/constants');
 const { getLastDate, saveNewDate } = require('../lib/storage');
 const { notify } = require('../lib/notify');
-const { log, formatDate, getTodayDateStr, getCurrentTimeNum } = require('./utils');
+const { log, formatDate, getTodayDateStr, getCurrentTime } = require('./utils');
 
 async function fetchAppt() {
   try {
@@ -47,7 +47,7 @@ async function fetchAppt() {
       isProtocolosChatBot: false,
       isLast: false,
       tipoBusqueda: 'SIMPLE',
-      horaInicio: getCurrentTimeNum(),
+      horaInicio: getCurrentTime(),
     });
 
     const response = await axios.post(

@@ -25,7 +25,7 @@ function getTodayDateStr() {
   return `${day}/${month}/${year}`;
 }
 
-function getCurrentTimeNum() {
+function getCurrentTime() {
   const now = new Date();
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -34,4 +34,4 @@ function getCurrentTimeNum() {
 }
 
 
-module.exports = { log, formatDate, getTodayDateStr, getCurrentTimeNum };
+module.exports = { log, formatDate, getTodayDateStr, getCurrentTime };
