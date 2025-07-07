@@ -33,5 +33,11 @@ function getCurrentTime() {
   return `${hours}${minutes}${seconds}`;
 }
 
+function parseDate(str) {
+  const [datePart, timePart] = str.split('_');
+  const [day, month, year] = datePart.split('/');
+  return new Date(`${year}-${month}-${day}T${timePart}`);
+}
 
-module.exports = { log, formatDate, getTodayDateStr, getCurrentTime };
+
+module.exports = { log, formatDate, getTodayDateStr, getCurrentTime, parseDate };

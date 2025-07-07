@@ -4,7 +4,7 @@ require('dotenv').config();
 const { config } = require('../config/constants');
 const { getLastDate, saveNewDate } = require('../lib/storage');
 const { notify } = require('../lib/notify');
-const { log, formatDate, getTodayDateStr, getCurrentTime } = require('./utils');
+const { log, formatDate, getTodayDateStr, getCurrentTime, parseDate } = require('./utils');
 
 async function fetchAppt() {
   try {
@@ -69,7 +69,7 @@ async function fetchAppt() {
         );
         saveNewDate(dateTimeStr);
       } else {
-        if (dateTimeStr < lastDateStr) {
+        if (parseDate(dateTimeStr) < parseDate(lastDateStr)) {
           log(
             '********SUCCESS! Sending notification********'
           );
